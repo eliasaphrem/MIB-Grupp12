@@ -4,17 +4,18 @@
  */
 package mib.grupp12;
 
-/**
- *
- * @author elias
- */
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 public class MIBGrupp12 {
 
-    /**
-     * @param args the command line arguments
-     */
+    private static InfDB idb;
+   
     public static void main(String[] args) {
-        // TODO code application logic here
+       try {
+           idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+       } catch (InfException ex) {
+       }
     }
     
 }
