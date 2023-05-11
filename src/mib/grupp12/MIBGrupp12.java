@@ -18,5 +18,5 @@ public class MIBGrupp12 {
        } catch (InfException ex) {
        }
     }
-    
+   
 }
