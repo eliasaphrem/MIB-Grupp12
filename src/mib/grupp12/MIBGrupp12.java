@@ -14,6 +14,7 @@ public class MIBGrupp12 {
     public static void main(String[] args) {
        try {
            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+           new mittfönster().setVisible(true);
        } catch (InfException ex) {
        }
     }
