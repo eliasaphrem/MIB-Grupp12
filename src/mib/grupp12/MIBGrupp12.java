@@ -9,7 +9,7 @@ import oru.inf.InfException;
 
 public class MIBGrupp12 {
 
-    private static InfDB idba;
+    private static InfDB idb;
    
     public static void main(String[] args) {
        try {
