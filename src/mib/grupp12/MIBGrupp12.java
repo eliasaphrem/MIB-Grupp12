@@ -6,16 +6,20 @@ package mib.grupp12;
 
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 
 public class MIBGrupp12 {
 
     private static InfDB idb;
    
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InfException {
        try {
            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-           new mittfönster().setVisible(true);
+           
        } catch (InfException ex) {
+           Logger.getLogger(TestApplikation.class.getName()).log(Level.SEVERE, null, ex);
        }
     }
    
