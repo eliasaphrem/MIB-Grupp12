@@ -44,7 +44,7 @@ public class mittfönster extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("elias");
+        jLabel2.setText("MAria");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
