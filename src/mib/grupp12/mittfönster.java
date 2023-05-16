@@ -39,6 +39,7 @@ public class mittfönster extends javax.swing.JFrame {
     private void initComponents() {
 
         Knapp = new javax.swing.JButton();
+        namn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +50,8 @@ public class mittfönster extends javax.swing.JFrame {
             }
         });
 
+        namn.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,11 +60,17 @@ public class mittfönster extends javax.swing.JFrame {
                 .addContainerGap(179, Short.MAX_VALUE)
                 .addComponent(Knapp)
                 .addGap(146, 146, 146))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(namn, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(219, Short.MAX_VALUE)
+                .addContainerGap(70, Short.MAX_VALUE)
+                .addComponent(namn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
                 .addComponent(Knapp)
                 .addGap(58, 58, 58))
         );
@@ -72,6 +81,15 @@ public class mittfönster extends javax.swing.JFrame {
     private void KnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KnappActionPerformed
         // TODO add your handling code here:
         
+        try {
+            String fraga = "SELECT Namn from agent where Agent_ID = 1;";
+            String svar = idb.fetchSingle(fraga);
+            String resultat = svar;
+            namn.setText(resultat);
+        } catch (Exception ex) {
+        }
+
+
     }//GEN-LAST:event_KnappActionPerformed
 
     /**
@@ -111,5 +129,6 @@ public class mittfönster extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Knapp;
+    private javax.swing.JLabel namn;
     // End of variables declaration//GEN-END:variables
 }
