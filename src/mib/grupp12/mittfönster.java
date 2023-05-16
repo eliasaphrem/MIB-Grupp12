@@ -6,6 +6,7 @@ package mib.grupp12;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -40,6 +41,7 @@ public class mittfönster extends javax.swing.JFrame {
 
         Knapp = new javax.swing.JButton();
         namn = new javax.swing.JLabel();
+        text = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +53,8 @@ public class mittfönster extends javax.swing.JFrame {
         });
 
         namn.setText("jLabel1");
+
+        text.setText("jTextField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,13 +68,19 @@ public class mittfönster extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(namn, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(70, Short.MAX_VALUE)
                 .addComponent(namn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addGap(20, 20, 20)
+                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(Knapp)
                 .addGap(58, 58, 58))
         );
@@ -82,11 +92,13 @@ public class mittfönster extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         try {
-            String fraga = "SELECT Namn from agent where Agent_ID = 1;";
+            String id = text.getText();
+            String fraga = "SELECT Namn from agent where Agent_ID=" + id;
             String svar = idb.fetchSingle(fraga);
             String resultat = svar;
             namn.setText(resultat);
-        } catch (Exception ex) {
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Något gick fel");
         }
 
 
@@ -130,5 +142,6 @@ public class mittfönster extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Knapp;
     private javax.swing.JLabel namn;
+    private javax.swing.JTextField text;
     // End of variables declaration//GEN-END:variables
 }
