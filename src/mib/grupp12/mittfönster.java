@@ -39,21 +39,75 @@ public class mittfönster extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        WelcomeLabel = new javax.swing.JLabel();
+        ChoiceLabel = new javax.swing.JLabel();
+        AgentLogin = new javax.swing.JButton();
+        AlienLogin = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        WelcomeLabel.setText("Welcome");
+
+        ChoiceLabel.setText("Log in as Agent or Alien");
+
+        AgentLogin.setText("Agent");
+        AgentLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgentLoginActionPerformed(evt);
+            }
+        });
+
+        AlienLogin.setText("Alien");
+        AlienLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlienLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(AgentLogin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AlienLogin)
+                .addGap(57, 57, 57))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(WelcomeLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(ChoiceLabel)))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(WelcomeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ChoiceLabel)
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AgentLogin)
+                    .addComponent(AlienLogin))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AgentLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgentLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AgentLoginActionPerformed
+
+    private void AlienLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlienLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AlienLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -91,5 +145,9 @@ public class mittfönster extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AgentLogin;
+    private javax.swing.JButton AlienLogin;
+    private javax.swing.JLabel ChoiceLabel;
+    private javax.swing.JLabel WelcomeLabel;
     // End of variables declaration//GEN-END:variables
 }
