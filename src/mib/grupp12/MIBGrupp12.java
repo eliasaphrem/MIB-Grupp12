@@ -22,6 +22,6 @@ public class MIBGrupp12 {
            Logger.getLogger(MIBGrupp12.class.getName()).log(Level.SEVERE, null, ex);
        }
     }
-   
+ 
 }
 
