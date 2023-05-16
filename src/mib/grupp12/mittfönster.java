@@ -39,21 +39,87 @@ public class mittfönster extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Welcometxt = new javax.swing.JLabel();
+        ChooseLogintxt = new javax.swing.JLabel();
+        AgentLogin = new javax.swing.JButton();
+        AlienLogin = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Welcometxt.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        Welcometxt.setText("Welcome");
+        Welcometxt.setSize(new java.awt.Dimension(60, 60));
+
+        ChooseLogintxt.setText("Log in as Agent or Alien");
+
+        AgentLogin.setText("Agent");
+        AgentLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgentLoginActionPerformed(evt);
+            }
+        });
+
+        AlienLogin.setText("Alien");
+        AlienLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AlienLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(AgentLogin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AlienLogin)
+                .addGap(57, 57, 57))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(ChooseLogintxt))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(Welcometxt, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(Welcometxt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ChooseLogintxt)
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AgentLogin)
+                    .addComponent(AlienLogin))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AgentLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgentLoginActionPerformed
+        // TODO add your handling code here:
+        // Man ska tas vidare till Agentsidan för att logga in som agent
+        AgentLogin al = new AgentLogin();
+        al.show();
+        
+        dispose();
+    }//GEN-LAST:event_AgentLoginActionPerformed
+
+    private void AlienLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlienLoginActionPerformed
+        // TODO add your handling code here:
+        //Man ska tas vidare till ALien sidna för att logga in som alien
+         AlienLogin alien = new AlienLogin();
+        alien.show();
+        
+        dispose();
+    }//GEN-LAST:event_AlienLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -91,5 +157,9 @@ public class mittfönster extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AgentLogin;
+    private javax.swing.JButton AlienLogin;
+    private javax.swing.JLabel ChooseLogintxt;
+    private javax.swing.JLabel Welcometxt;
     // End of variables declaration//GEN-END:variables
 }
