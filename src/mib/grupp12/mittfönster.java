@@ -4,17 +4,30 @@
  */
 package mib.grupp12;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
+
 /**
  *
  * @author elias
  */
 public class mittfönster extends javax.swing.JFrame {
 
+    private InfDB idb;
     /**
      * Creates new form mittfönster
      */
     public mittfönster() {
         initComponents();
+        
+        try {
+           idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+       } catch (InfException ex) {
+           Logger.getLogger(MIBGrupp12.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
 
     /**
