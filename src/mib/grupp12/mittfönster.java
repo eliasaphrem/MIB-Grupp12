@@ -4,11 +4,7 @@
  */
 package mib.grupp12;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import oru.inf.InfDB;
-import oru.inf.InfException;
-
 
 /**
  *
@@ -17,17 +13,13 @@ import oru.inf.InfException;
 public class mittfönster extends javax.swing.JFrame {
 
     private InfDB idb;
+
     /**
      * Creates new form mittfönster
      */
     public mittfönster() {
         initComponents();
-        
-        try {
-           idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-       } catch (InfException ex) {
-           Logger.getLogger(MIBGrupp12.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        this.idb = idb;
     }
 
     /**
@@ -39,14 +31,11 @@ public class mittfönster extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        WelcomeLabel = new javax.swing.JLabel();
         ChoiceLabel = new javax.swing.JLabel();
         AgentLogin = new javax.swing.JButton();
         AlienLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        WelcomeLabel.setText("Welcome");
 
         ChoiceLabel.setText("Log in as Agent or Alien");
 
@@ -69,27 +58,21 @@ public class mittfönster extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(AgentLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AlienLogin)
-                .addGap(57, 57, 57))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(WelcomeLabel))
+                        .addGap(91, 91, 91)
+                        .addComponent(AgentLogin)
+                        .addGap(64, 64, 64)
+                        .addComponent(AlienLogin))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(126, 126, 126)
                         .addComponent(ChoiceLabel)))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(WelcomeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(64, 64, 64)
                 .addComponent(ChoiceLabel)
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -102,7 +85,9 @@ public class mittfönster extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgentLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgentLoginActionPerformed
-        // TODO add your handling code here:
+        AgentLogin aglogin = new AgentLogin();
+        aglogin.show();
+        dispose();
     }//GEN-LAST:event_AgentLoginActionPerformed
 
     private void AlienLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlienLoginActionPerformed
@@ -112,42 +97,9 @@ public class mittfönster extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mittfönster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mittfönster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mittfönster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mittfönster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new mittfönster().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgentLogin;
     private javax.swing.JButton AlienLogin;
     private javax.swing.JLabel ChoiceLabel;
-    private javax.swing.JLabel WelcomeLabel;
     // End of variables declaration//GEN-END:variables
 }
