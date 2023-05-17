@@ -4,9 +4,6 @@
  */
 package mib.grupp12;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -20,14 +17,10 @@ public class mittfönster extends javax.swing.JFrame {
     /**
      * Creates new form mittfönster
      */
-    public mittfönster() throws InfException {
+    public mittfönster(InfDB idb) throws InfException {
         initComponents();
+        this.idb = idb;
         
-        try {
-           idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-       } catch (InfException ex) {
-           Logger.getLogger(MIBGrupp12.class.getName()).log(Level.SEVERE, null, ex);
-       }
     }
 
     /**
@@ -39,109 +32,81 @@ public class mittfönster extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Knapp = new javax.swing.JButton();
-        namn = new javax.swing.JLabel();
-        text = new javax.swing.JTextField();
+        RubrikMib = new javax.swing.JLabel();
+        loggin = new javax.swing.JLabel();
+        Agent = new javax.swing.JButton();
+        Alien = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Knapp.setText("jButton1");
-        Knapp.addActionListener(new java.awt.event.ActionListener() {
+        RubrikMib.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        RubrikMib.setText("MIB");
+
+        loggin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        loggin.setText("Please log in as:");
+
+        Agent.setText("Agent");
+        Agent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KnappActionPerformed(evt);
+                AgentActionPerformed(evt);
             }
         });
 
-        namn.setText("jLabel1");
-
-        text.setText("jTextField1");
+        Alien.setText("Alien");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(179, Short.MAX_VALUE)
-                .addComponent(Knapp)
-                .addGap(146, 146, 146))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(namn, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(Agent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Alien)
+                .addGap(60, 60, 60))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(RubrikMib, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(loggin, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
-                .addComponent(namn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Knapp)
-                .addGap(58, 58, 58))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(RubrikMib, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(loggin)
+                .addGap(54, 54, 54)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Agent)
+                    .addComponent(Alien))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void KnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KnappActionPerformed
+    private void AgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgentActionPerformed
         // TODO add your handling code here:
-        
-        try {
-            String id = text.getText();
-            String fraga = "SELECT Namn from agent where Agent_ID=" + id;
-            String svar = idb.fetchSingle(fraga);
-            String resultat = svar;
-            namn.setText(resultat);
-        } catch (InfException ex) {
-            JOptionPane.showMessageDialog(null, "Något gick fel");
-        }
-
-
-    }//GEN-LAST:event_KnappActionPerformed
+        Agentloggin ag = new Agentloggin();
+        ag.show();
+        dispose();
+    }//GEN-LAST:event_AgentActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mittfönster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mittfönster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mittfönster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mittfönster.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Knapp;
-    private javax.swing.JLabel namn;
-    private javax.swing.JTextField text;
+    private javax.swing.JButton Agent;
+    private javax.swing.JButton Alien;
+    private javax.swing.JLabel RubrikMib;
+    private javax.swing.JLabel loggin;
     // End of variables declaration//GEN-END:variables
 }
