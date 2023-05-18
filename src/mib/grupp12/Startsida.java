@@ -84,6 +84,7 @@ public class Startsida extends javax.swing.JFrame {
          try {
              nytt = new mittfönster();
              nytt.setVisible(true);
+             dispose();
          } catch (InfException ex) {
              Logger.getLogger(Startsida.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -96,7 +97,8 @@ public class Startsida extends javax.swing.JFrame {
       ailenlogin nytt;
       nytt = new ailenlogin();
       nytt.setVisible(true);
-        
+      dispose();
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
