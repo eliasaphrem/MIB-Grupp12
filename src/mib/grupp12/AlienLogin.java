@@ -3,19 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package mib.grupp12;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+import javax.swing.*;
 /**
  *
  * @author dianazakholi
  */
 public class AlienLogin extends javax.swing.JFrame {
-
+private InfDB idb; 
     /**
      * Creates new form AlienLogin
      */
     public AlienLogin() {
         initComponents();
+        
+        try {
+           idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+       } catch (InfException ex) {
+           Logger.getLogger(MIBGrupp12.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,97 +38,123 @@ public class AlienLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         LogInAsAlien = new javax.swing.JLabel();
-        Email2 = new javax.swing.JTextField();
-        Pword2 = new javax.swing.JTextField();
         OKknapp2 = new javax.swing.JButton();
+        LoginInfoAL = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        angeEpostAL = new javax.swing.JTextField();
+        PassAL = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        LogInAsAlien.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        LogInAsAlien.setText("Log in as Alien");
+        LogInAsAlien.setFont(new java.awt.Font("Phosphate", 1, 48)); // NOI18N
+        LogInAsAlien.setText("welcome");
 
-        Email2.setText("E-mail");
+        OKknapp2.setText("Enter");
+        OKknapp2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OKknapp2ActionPerformed(evt);
+            }
+        });
 
-        Pword2.setText("Password");
+        LoginInfoAL.setFont(new java.awt.Font("Helvetica Neue", 3, 14)); // NOI18N
+        LoginInfoAL.setText("Log in using your Alien credentials");
 
-        OKknapp2.setText("OK");
+        jLabel2.setText("E-mail adress:");
+
+        jLabel3.setText("Password:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(265, 265, 265)
-                .addComponent(OKknapp2)
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(angeEpostAL, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(PassAL))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(Email2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
-                .addComponent(Pword2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LogInAsAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(154, 154, 154))
+                .addGap(26, 193, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LoginInfoAL)
+                            .addComponent(LogInAsAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(171, 171, 171))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(OKknapp2)
+                        .addGap(261, 261, 261))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
+                .addGap(44, 44, 44)
                 .addComponent(LogInAsAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(18, 18, 18)
+                .addComponent(LoginInfoAL)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Email2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Pword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(angeEpostAL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(PassAL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68)
                 .addComponent(OKknapp2)
-                .addGap(112, 112, 112))
+                .addGap(62, 62, 62))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void OKknapp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKknapp2ActionPerformed
+        // TODO add your handling code here:
+        String epost = angeEpostAL.getText();
+char[] charLosenord = PassAL.getPassword();
+String losenord = new String(charLosenord);
+
+try {
+    String sqlFraga = "SELECT losenord FROM alien WHERE Epost ='" + epost + "'";
+    String getAlienID = "SELECT Alien_ID FROM alien WHERE Epost = '" + epost + "'";
+    String alienID = idb.fetchSingle(getAlienID);
+    String sqlSvarLosenord = idb.fetchSingle(sqlFraga);
+    
+    if (sqlSvarLosenord != null && losenord.equals(sqlSvarLosenord)) {
+        AlienPage alien = new AlienPage();
+        alien.show();
+        
+        dispose();
+        
+        
+        }
+            else 
+    {
+            JOptionPane.showMessageDialog(null, "E-post eller lösenord är felaktigt.");
+}
+    }
+    catch (InfException e){
+            System.out.println("fel" + e.getMessage());
+    }
+    }//GEN-LAST:event_OKknapp2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AlienLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AlienLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AlienLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AlienLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AlienLogin().setVisible(true);
-            }
-        });
-    }
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Email2;
     private javax.swing.JLabel LogInAsAlien;
+    private javax.swing.JLabel LoginInfoAL;
     private javax.swing.JButton OKknapp2;
-    private javax.swing.JTextField Pword2;
+    private javax.swing.JPasswordField PassAL;
+    private javax.swing.JTextField angeEpostAL;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

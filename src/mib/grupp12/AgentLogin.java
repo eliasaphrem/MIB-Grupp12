@@ -3,18 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package mib.grupp12;
-
-/**
- *
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+import javax.swing.*;
+ /*
  * @author dianazakholi
  */
 public class AgentLogin extends javax.swing.JFrame {
-
+  private InfDB idb; 
     /**
      * Creates new form AgentLogin
      */
     public AgentLogin() {
         initComponents();
+
+        try {
+           idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+       } catch (InfException ex) {
+           Logger.getLogger(MIBGrupp12.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
 
     /**
@@ -26,24 +35,32 @@ public class AgentLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        AgentLabel = new javax.swing.JLabel();
-        Emailtxt = new javax.swing.JTextField();
-        Passwordtxt = new javax.swing.JTextField();
-        OKknapp = new javax.swing.JButton();
+        WelcomelabelAG = new javax.swing.JLabel();
+        angeEpost = new javax.swing.JTextField();
+        EmailLabel = new javax.swing.JLabel();
+        PassLabel = new javax.swing.JLabel();
+        AGlabelinfo = new javax.swing.JLabel();
+        EnterButtonAG = new javax.swing.JButton();
+        angeLosenAG = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        AgentLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        AgentLabel.setText("Log in as Agent");
+        WelcomelabelAG.setFont(new java.awt.Font("Phosphate", 1, 48)); // NOI18N
+        WelcomelabelAG.setText("Welcome");
 
-        Emailtxt.setText("E-mail");
+        EmailLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        EmailLabel.setText("E-mail adress:");
 
-        Passwordtxt.setText("Password");
+        PassLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        PassLabel.setText("Password:");
 
-        OKknapp.setText("OK");
-        OKknapp.addActionListener(new java.awt.event.ActionListener() {
+        AGlabelinfo.setFont(new java.awt.Font("Helvetica Neue", 3, 14)); // NOI18N
+        AGlabelinfo.setText("Log in using your Agent credentials");
+
+        EnterButtonAG.setText("Enter");
+        EnterButtonAG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OKknappActionPerformed(evt);
+                EnterButtonAGActionPerformed(evt);
             }
         });
 
@@ -52,93 +69,98 @@ public class AgentLogin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(AgentLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                        .addComponent(Passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(OKknapp)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PassLabel)
+                            .addComponent(EmailLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(angeEpost, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                            .addComponent(angeLosenAG)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(WelcomelabelAG, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AGlabelinfo)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(309, 309, 309)
+                        .addComponent(EnterButtonAG)))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(AgentLabel)
-                .addGap(64, 64, 64)
+                .addGap(17, 17, 17)
+                .addComponent(WelcomelabelAG, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AGlabelinfo)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(OKknapp)
-                .addGap(87, 87, 87))
+                    .addComponent(angeEpost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EmailLabel))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PassLabel)
+                    .addComponent(angeLosenAG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(EnterButtonAG)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void OKknappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKknappActionPerformed
+    private void EnterButtonAGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterButtonAGActionPerformed
         // TODO add your handling code here:
-        // Tas vidare till Agentsidan om allt är korrekt.
-        //if {
-        if (Passwordtxt.equals("password"))
-   OKknapp.setEnabled(false);
-          // AgentPage ap = new AgentPage();
-      // ap.show();
-        
-     // dispose(); }
-        //else {
-                //felmeddelande om att lösenord eller email är fel
-                //}
-    }//GEN-LAST:event_OKknappActionPerformed
+String epost = angeEpost.getText();
+char[] charLosenord = angeLosenAG.getPassword();
+String losenord = new String(charLosenord);
 
+try {
+    String sqlFraga = "SELECT losenord FROM agent WHERE Epost ='" + epost + "'";
+    String getAgentID = "SELECT Agent_ID FROM agent WHERE Epost = '" + epost + "'";
+    String agentID = idb.fetchSingle(getAgentID);
+    String sqlFragaAdmin = "SELECT Administrator FROM agent WHERE Agent_ID = " + agentID;
+    String sqlSvarLosenord = idb.fetchSingle(sqlFraga);
+    String sqlSvarAdmin = idb.fetchSingle(sqlFragaAdmin);
+    
+    if (sqlSvarLosenord != null && losenord.equals(sqlSvarLosenord) && sqlSvarAdmin.equals("N")) {
+       
+      AgentPage ap = new AgentPage();
+        ap.show();
+        
+        dispose();
+      
+        
+    } else if (sqlSvarLosenord != null && losenord.equals(sqlSvarLosenord) && sqlSvarAdmin.equals("J")){
+        JOptionPane.showMessageDialog(null, "Du är en administratör, byt inloggning till administratör.");
+    }
+            else 
+    {
+            JOptionPane.showMessageDialog(null, "E-post eller lösenord är felaktigt.");
+}
+    }
+    catch (InfException e){
+            System.out.println("fel" + e.getMessage());
+}
+        
+    
+    }//GEN-LAST:event_EnterButtonAGActionPerformed
+  
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgentLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgentLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgentLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgentLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AgentLogin().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AgentLabel;
-    private javax.swing.JTextField Emailtxt;
-    private javax.swing.JButton OKknapp;
-    private javax.swing.JTextField Passwordtxt;
+    private javax.swing.JLabel AGlabelinfo;
+    private javax.swing.JLabel EmailLabel;
+    private javax.swing.JButton EnterButtonAG;
+    private javax.swing.JLabel PassLabel;
+    private javax.swing.JLabel WelcomelabelAG;
+    private javax.swing.JTextField angeEpost;
+    private javax.swing.JPasswordField angeLosenAG;
     // End of variables declaration//GEN-END:variables
 }
