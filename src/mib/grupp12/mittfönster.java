@@ -4,6 +4,11 @@
  */
 package mib.grupp12;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -21,6 +26,7 @@ public class mittfönster extends javax.swing.JFrame {
         initComponents();
         this.idb = idb;
         
+        
     }
 
     /**
@@ -32,71 +38,82 @@ public class mittfönster extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        RubrikMib = new javax.swing.JLabel();
-        loggin = new javax.swing.JLabel();
-        Agent = new javax.swing.JButton();
-        Alien = new javax.swing.JButton();
+        username = new javax.swing.JTextField();
+        password = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        RubrikMib.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        RubrikMib.setText("MIB");
-
-        loggin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        loggin.setText("Please log in as:");
-
-        Agent.setText("Agent");
-        Agent.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Sigin");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgentActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        Alien.setText("Alien");
+        jButton2.setText("Reset");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(Agent)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Alien)
-                .addGap(60, 60, 60))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(RubrikMib, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(loggin, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(143, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(password)
+                    .addComponent(username))
+                .addGap(0, 60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(RubrikMib, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(loggin)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(54, 54, 54)
+                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Agent)
-                    .addComponent(Alien))
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgentActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Agentloggin ag = new Agentloggin();
-        ag.show();
-        dispose();
-    }//GEN-LAST:event_AgentActionPerformed
+        try{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mibdb", "mibdba", "mibkey");
+        String sql = "Select * from Agent where Epost=? and Losenord=?";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, username.getText());
+        pst.setString(2, password.getText());
+        ResultSet rs = pst.executeQuery();
+        if(rs.next()){
+         JOptionPane.showMessageDialog(null, "Username and password matched");
+         Agentsida sida = new Agentsida();
+         sida.setVisible(true);
+         setVisible(false);
+        }
+        else{
+         JOptionPane.showMessageDialog(null, "Username and password didnt matched");
+         username.setText("");
+         password.setText("");
+        }
+        con.close();
+        
+        }
+        catch(Exception e){
+           JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,9 +121,9 @@ public class mittfönster extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Agent;
-    private javax.swing.JButton Alien;
-    private javax.swing.JLabel RubrikMib;
-    private javax.swing.JLabel loggin;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPasswordField password;
+    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
