@@ -22,7 +22,7 @@ public class mittfönster extends javax.swing.JFrame {
     /**
      * Creates new form mittfönster
      */
-    public mittfönster(InfDB idb) throws InfException {
+    public mittfönster() throws InfException {
         initComponents();
         this.idb = idb;
         
@@ -41,7 +41,6 @@ public class mittfönster extends javax.swing.JFrame {
         username = new javax.swing.JTextField();
         password = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,8 +51,6 @@ public class mittfönster extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Reset");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,8 +60,7 @@ public class mittfönster extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(password)
+                    .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                     .addComponent(username))
                 .addGap(0, 60, Short.MAX_VALUE))
         );
@@ -76,9 +72,7 @@ public class mittfönster extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addComponent(jButton1)
                 .addGap(24, 24, 24))
         );
 
@@ -97,9 +91,9 @@ public class mittfönster extends javax.swing.JFrame {
         ResultSet rs = pst.executeQuery();
         if(rs.next()){
          JOptionPane.showMessageDialog(null, "Username and password matched");
-         Agentsida sida = new Agentsida();
-         sida.setVisible(true);
-         setVisible(false);
+         //Agentsida sida = new Agentsida();
+         //sida.setVisible(true);
+         //setVisible(false);
         }
         else{
          JOptionPane.showMessageDialog(null, "Username and password didnt matched");
@@ -122,7 +116,6 @@ public class mittfönster extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables

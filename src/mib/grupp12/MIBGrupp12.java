@@ -20,7 +20,7 @@ public class MIBGrupp12 {
        } catch (InfException ex) {
            Logger.getLogger(MIBGrupp12.class.getName()).log(Level.SEVERE, null, ex);
        }
-       new mittfönster(idb).setVisible(true);
+       new Startsida(idb).setVisible(true);
     }
  
 }
