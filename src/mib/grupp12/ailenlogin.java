@@ -102,10 +102,9 @@ public class ailenlogin extends javax.swing.JFrame {
         pst.setString(2, password.getText());
         ResultSet rs = pst.executeQuery();
         if(rs.next()){
-         JOptionPane.showMessageDialog(null, "Username and password matched");
-         //Agentsida sida = new Agentsida();
-         //sida.setVisible(true);
-         //setVisible(false);
+         aliensida sida = new aliensida();
+         sida.setVisible(true);
+         setVisible(false);
         }
         else{
          JOptionPane.showMessageDialog(null, "Username and password didnt matched");

@@ -109,10 +109,9 @@ public class mittfönster extends javax.swing.JFrame {
         pst.setString(2, password.getText());
         ResultSet rs = pst.executeQuery();
         if(rs.next()){
-         JOptionPane.showMessageDialog(null, "Username and password matched");
-         //Agentsida sida = new Agentsida();
-         //sida.setVisible(true);
-         //setVisible(false);
+         agentsida sida = new agentsida();
+         sida.setVisible(true);
+         setVisible(false);
         }
         else{
          JOptionPane.showMessageDialog(null, "Username and password didnt matched");
