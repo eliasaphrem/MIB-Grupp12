@@ -17,7 +17,7 @@ public class MIBGrupp12 {
     public static void main(String[] args) throws InfException {
        try {
            idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-           new mittfönster().setVisible(true);
+           
        } catch (InfException ex) {
            Logger.getLogger(MIBGrupp12.class.getName()).log(Level.SEVERE, null, ex);
        }
