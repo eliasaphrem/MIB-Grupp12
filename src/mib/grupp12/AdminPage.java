@@ -4,17 +4,29 @@
  */
 package mib.grupp12;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /**
  *
  * @author dianazakholi
  */
 public class AdminPage extends javax.swing.JFrame {
+    private InfDB idb; 
 
     /**
      * Creates new form AdminPage
      */
     public AdminPage() {
         initComponents();
+        
+        try {
+           idb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+       } catch (InfException ex) {
+           Logger.getLogger(MIBGrupp12.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
 
     /**
@@ -26,24 +38,47 @@ public class AdminPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        deletealien = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        deletealien.setText("DELETE ALIEN ");
+        deletealien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletealienActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(deletealien)
+                .addContainerGap(391, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 363, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(295, Short.MAX_VALUE)
+                .addComponent(deletealien)
+                .addGap(45, 45, 45))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void deletealienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletealienActionPerformed
+        // TODO add your handling code here:
+        tabortalien bort = new tabortalien();
+        bort.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_deletealienActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton deletealien;
     // End of variables declaration//GEN-END:variables
 }
