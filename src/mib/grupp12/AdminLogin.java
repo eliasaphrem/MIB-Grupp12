@@ -147,6 +147,8 @@ try {
             else 
     {
             JOptionPane.showMessageDialog(null, "E-post eller lösenord är felaktigt.");
+            angeEpostAD.setText(null);
+            angeLosenAD.setText(null);
 }
     }
     catch (InfException e){

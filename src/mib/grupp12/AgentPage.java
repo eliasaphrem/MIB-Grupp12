@@ -5,23 +5,25 @@
 package mib.grupp12;
 
 import oru.inf.InfDB;
+import oru.inf.InfException;
+import javax.swing.*;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author dianazakholi
  */
 public class AgentPage extends javax.swing.JFrame {
-
+   private InfDB idb;
     /**
      * Creates new form AgentPage
      */
     public AgentPage() {
         initComponents();
+        
     }
 
-    AgentPage(InfDB idb, String agentID) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,21 +34,141 @@ public class AgentPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        andraLosenAG = new javax.swing.JButton();
+        RegisterNew = new javax.swing.JButton();
+        AlienInfo = new javax.swing.JButton();
+        Statistics = new javax.swing.JButton();
+        Equipment = new javax.swing.JButton();
+        AreaInfo = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        jLabel1.setText("Welcome Agent");
+
+        andraLosenAG.setFont(new java.awt.Font("Helvetica Neue", 3, 13)); // NOI18N
+        andraLosenAG.setText("Change password");
+        andraLosenAG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                andraLosenAGActionPerformed(evt);
+            }
+        });
+
+        RegisterNew.setFont(new java.awt.Font("Helvetica Neue", 3, 13)); // NOI18N
+        RegisterNew.setText("Register new Alien");
+        RegisterNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterNewActionPerformed(evt);
+            }
+        });
+
+        AlienInfo.setFont(new java.awt.Font("Helvetica Neue", 3, 13)); // NOI18N
+        AlienInfo.setText("Alien information");
+
+        Statistics.setFont(new java.awt.Font("Helvetica Neue", 3, 13)); // NOI18N
+        Statistics.setText("Statistics");
+        Statistics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StatisticsActionPerformed(evt);
+            }
+        });
+
+        Equipment.setFont(new java.awt.Font("Helvetica Neue", 3, 13)); // NOI18N
+        Equipment.setText("Equipment");
+        Equipment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EquipmentActionPerformed(evt);
+            }
+        });
+
+        AreaInfo.setFont(new java.awt.Font("Helvetica Neue", 3, 13)); // NOI18N
+        AreaInfo.setText("Area information");
+        AreaInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AreaInfoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Choose what you would like to do");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 752, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(andraLosenAG, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(RegisterNew, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AlienInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Statistics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AreaInfo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Equipment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(162, 162, 162)
+                                .addComponent(jLabel2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(115, 115, 115)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(andraLosenAG, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(RegisterNew, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(AlienInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Statistics, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AreaInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(239, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void andraLosenAGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraLosenAGActionPerformed
+        // TODO add your handling code here:
+        AndraLosenAG andra = new AndraLosenAG();
+        andra.show();
+        dispose();
+      
+    }//GEN-LAST:event_andraLosenAGActionPerformed
+
+    private void RegisterNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterNewActionPerformed
+        // TODO add your handling code here:
+        RegisterNewAlien reg = new RegisterNewAlien();
+        reg.show();
+        dispose();
+    }//GEN-LAST:event_RegisterNewActionPerformed
+
+    private void StatisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatisticsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StatisticsActionPerformed
+
+    private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EquipmentActionPerformed
+
+    private void AreaInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AreaInfoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AreaInfoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -54,5 +176,13 @@ public class AgentPage extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AlienInfo;
+    private javax.swing.JButton AreaInfo;
+    private javax.swing.JButton Equipment;
+    private javax.swing.JButton RegisterNew;
+    private javax.swing.JButton Statistics;
+    private javax.swing.JButton andraLosenAG;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
