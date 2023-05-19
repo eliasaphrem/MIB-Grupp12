@@ -139,6 +139,10 @@ try {
         
     } else if (sqlSvarLosenord != null && losenord.equals(sqlSvarLosenord) && sqlSvarAdmin.equals("N")){
         JOptionPane.showMessageDialog(null, "Du är en agent, byt inloggning till agent.");
+    mittfönster start = new mittfönster();
+    start.show();
+    
+    dispose();
     }
             else 
     {

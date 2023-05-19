@@ -136,10 +136,17 @@ try {
         
     } else if (sqlSvarLosenord != null && losenord.equals(sqlSvarLosenord) && sqlSvarAdmin.equals("J")){
         JOptionPane.showMessageDialog(null, "Du är en administratör, byt inloggning till administratör.");
+    mittfönster start = new mittfönster();
+    start.show();
+    
+    dispose();
+    
     }
             else 
     {
             JOptionPane.showMessageDialog(null, "E-post eller lösenord är felaktigt.");
+            angeEpost.setText(null);
+            angeLosenAG.setText(null);
 }
     }
     catch (InfException e){
@@ -149,11 +156,7 @@ try {
     
     }//GEN-LAST:event_EnterButtonAGActionPerformed
   
-    /**
-     * @param args the command line arguments
-     */
-    
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AGlabelinfo;
     private javax.swing.JLabel EmailLabel;
