@@ -104,7 +104,7 @@ public class adminpage extends javax.swing.JFrame {
                     idb.delete("DELETE FROM alien WHERE Alien_ID=" + id);
                     JOptionPane.showMessageDialog(rootPane, "Alien är nu raderad");
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Alien finns inte med i systemet");
+                    JOptionPane.showMessageDialog(rootPane, "Alien verkar inte finnas med i systemet");
                     txtalien.setText(null);
                 }
             } catch (InfException e) {
