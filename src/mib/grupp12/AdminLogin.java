@@ -14,6 +14,7 @@ import javax.swing.*;
  */
 public class AdminLogin extends javax.swing.JFrame {
 private InfDB idb; 
+
     /**
      * Creates new form AdminLogin
      */
@@ -130,10 +131,12 @@ try {
     String sqlSvarAdmin = idb.fetchSingle(sqlFragaAdmin);
     
     if (sqlSvarLosenord != null && losenord.equals(sqlSvarLosenord) && sqlSvarAdmin.equals("J")) {
-       
-      AdminPage ad = new AdminPage();
+        String email = angeEpostAD.getText();
+        datahandler.setSparadEpost(email);
+
+        adminpage ad = new adminpage();
         ad.show();
-        
+
         dispose();
       
         
