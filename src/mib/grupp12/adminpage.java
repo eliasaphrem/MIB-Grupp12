@@ -4,7 +4,6 @@
  */
 package mib.grupp12;
 
-
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +18,6 @@ import oru.inf.InfException;
 public class adminpage extends javax.swing.JFrame {
 
     private InfDB idb;
-    
 
     /**
      * Creates new form adminpage
@@ -36,6 +34,7 @@ public class adminpage extends javax.swing.JFrame {
         fyllComboBox1();
         fyllComboBox2();
         fyllComboBox3();
+        fyllComboBox4();
     }
 
     /**
@@ -59,6 +58,9 @@ public class adminpage extends javax.swing.JFrame {
         cbvaljagent = new javax.swing.JComboBox<>();
         cbvaljutrustning = new javax.swing.JComboBox<>();
         cbvaljadminagent = new javax.swing.JComboBox<>();
+        cbvaljagentinfo = new javax.swing.JComboBox<>();
+        changealieninfo = new javax.swing.JButton();
+        txtnamninfo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,11 +72,6 @@ public class adminpage extends javax.swing.JFrame {
         });
 
         deleteagent.setText("DELETE AGENT");
-        deleteagent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteagentActionPerformed(evt);
-            }
-        });
 
         deleteutrustning.setText("DELETE UTRUSTNING");
         deleteutrustning.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +95,15 @@ public class adminpage extends javax.swing.JFrame {
 
         cbvaljadminagent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        cbvaljagentinfo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        changealieninfo.setText("CHANGE ALIEN INFO");
+        changealieninfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changealieninfoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,74 +111,91 @@ public class adminpage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(cbvaljalien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(113, 113, 113)
+                        .addComponent(deletealien)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtagent, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(deleteutrustning))
+                        .addGap(129, 129, 129)
+                        .addComponent(cbvaljalien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbvaljagent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(146, 146, 146)
+                        .addComponent(txtutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(89, 89, 89)
+                                .addComponent(deleteutrustning))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addComponent(cbvaljutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(131, 131, 131)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(65, 65, 65)
+                                        .addComponent(deleteagent)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtalien, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(52, 52, 52)
-                                        .addComponent(deletealien))
-                                    .addComponent(cbvaljutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(146, 146, 146)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(deleteagent)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(changeadmin, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(31, 31, 31)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(cbvaljadminagent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txtadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGap(35, 35, 35)))
-                                            .addComponent(txtagent, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(133, 133, 133)
-                                        .addComponent(cbvaljagent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(txtutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(176, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(changealieninfo))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(changeadmin)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                                                .addComponent(cbvaljagentinfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(24, 24, 24))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(154, 154, 154)
+                                .addComponent(cbvaljadminagent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtnamninfo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(txtutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(cbvaljutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(deleteutrustning)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtalien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbvaljalien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbvaljutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbvaljadminagent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteutrustning)
+                    .addComponent(changeadmin)
+                    .addComponent(cbvaljagentinfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(txtnamninfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(changealieninfo)
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbvaljalien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbvaljagent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addComponent(deletealien))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txtadmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbvaljadminagent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(changeadmin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                        .addComponent(cbvaljagent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtagent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(deleteagent)))
-                .addGap(32, 32, 32))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtutrustning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deleteagent)
+                            .addComponent(txtalien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(4, 4, 4)
+                .addComponent(txtagent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -198,27 +221,26 @@ public class adminpage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Vänligen skriv in en vald alien");
             }
         }
-        */
+         */
         String hamta = cbvaljalien.getSelectedItem().toString();
 
         try {
             String id = idb.fetchSingle("SELECT Alien_ID from alien WHERE Namn='" + hamta + "'");
-            
+
             idb.delete("DELETE FROM boglodite WHERE Alien_ID=" + id);
             idb.delete("DELETE FROM squid WHERE Alien_ID=" + id);
             idb.delete("DELETE FROM worm WHERE Alien_ID=" + id);
             idb.delete("DELETE FROM alien WHERE Alien_ID=" + id);
             JOptionPane.showMessageDialog(rootPane, "Alien: " + hamta + " är nu raderad!");
             fyllComboBox();
-            
 
         } catch (InfException e) {
             JOptionPane.showMessageDialog(rootPane, "funkar ej");
         }
-        
+
     }//GEN-LAST:event_deletealienActionPerformed
 
-   private void fyllComboBox() {
+    private void fyllComboBox() {
         cbvaljalien.removeAllItems();
         try {
             ArrayList<String> alienNamn = idb.fetchColumn("select namn from alien");
@@ -228,63 +250,7 @@ public class adminpage extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel!");
         }
-   }
-    
-    
-    private void deleteagentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteagentActionPerformed
-        // TODO add your handling code here:
-        /*String id = txtagent.getText();
-        String sparadEpost = datahandler.getSparadEpost();
-        
-        if (id != null) {
-            try {
-                String hamta = idb.fetchSingle("SELECT * FROM agent WHERE Agent_ID=" + id);
-                String adminepost = idb.fetchSingle("SELECT Epost from agent WHERE Agent_ID=" + id);
-                //String agentid = idb.fetchSingle("SELECT Epost from agent where Agent_ID="+id);
-                if (hamta != null && sparadEpost != null && !sparadEpost.equals(adminepost)) {
-                    idb.delete("DELETE FROM omradeschef WHERE Agent_ID=" + id);
-                    idb.delete("DELETE FROM kontorschef WHERE Agent_ID=" + id);
-                    idb.delete("DELETE FROM innehar_utrustning WHERE Agent_ID=" + id);
-                    idb.delete("DELETE FROM faltagent WHERE Agent_ID=" + id);
-                    idb.delete("DELETE FROM agent WHERE Agent_ID=" + id);
-                    JOptionPane.showMessageDialog(rootPane, "Agent är nu raderad");
-                    txtagent.setText(null);
-                } else if (hamta != null && sparadEpost != null && sparadEpost.equals(adminepost)) {
-                    JOptionPane.showMessageDialog(rootPane, "Du kan inte ta bort dig själv");
-                    txtagent.setText(null);
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Agent finns inte med i systemet");
-                    txtagent.setText(null);
-                }
-            } catch (InfException e) {
-                JOptionPane.showMessageDialog(rootPane, "Vänligen skriv in en vald agent");
-            }
-        }
-        */
-        String hamta = cbvaljagent.getSelectedItem().toString();
-        String sparadEpost = datahandler.getSparadEpost();
-        try {
-            String adminepost = idb.fetchSingle("SELECT Epost from agent WHERE Namn='" + hamta + "'");
-            String id = idb.fetchSingle("SELECT Agent_ID from agent WHERE Namn='" + hamta + "'");
-            if (!sparadEpost.equals(adminepost)) {
-                idb.delete("DELETE FROM omradeschef WHERE Agent_ID=" + id);
-                idb.delete("DELETE FROM kontorschef WHERE Agent_ID=" + id);
-                idb.delete("DELETE FROM innehar_utrustning WHERE Agent_ID=" + id);
-                idb.delete("DELETE FROM faltagent WHERE Agent_ID=" + id);
-                idb.delete("DELETE FROM agent WHERE Agent_ID=" + id);
-                JOptionPane.showMessageDialog(rootPane, "Agent " + hamta +" är nu raderad");
-                fyllComboBox1();
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Du kan inte ta bort dig själv!");
-
-            }
-
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(rootPane, e);
-        }
-
-
-    }//GEN-LAST:event_deleteagentActionPerformed
+    }
 
     private void fyllComboBox1() {
         cbvaljagent.removeAllItems();
@@ -296,7 +262,7 @@ public class adminpage extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel!");
         }
-   }
+    }
     private void deleteutrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteutrustningActionPerformed
         // TODO add your handling code here:
         /*String utrustning = txtutrustning.getText();
@@ -320,24 +286,24 @@ public class adminpage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Vänligen skriv in utrustning");
             }
         }
-        */
+         */
         String hamta = cbvaljutrustning.getSelectedItem().toString();
-        
+
         try {
             String utrustning = idb.fetchSingle("SELECT Utrustnings_ID FROM utrustning WHERE Benamning='" + hamta + "'");
-            
+
             idb.delete("DELETE FROM innehar_utrustning WHERE Utrustnings_ID=" + utrustning);
             idb.delete("DELETE FROM kommunikation WHERE Utrustnings_ID=" + utrustning);
             idb.delete("DELETE FROM teknik WHERE Utrustnings_ID=" + utrustning);
             idb.delete("DELETE FROM vapen WHERE Utrustnings_ID=" + utrustning);
             idb.delete("DELETE FROM utrustning WHERE Utrustnings_ID=" + utrustning);
-            JOptionPane.showMessageDialog(rootPane, "Utrustning är nu raderad");            
+            JOptionPane.showMessageDialog(rootPane, "Utrustning är nu raderad");
             fyllComboBox2();
         } catch (InfException e) {
             JOptionPane.showMessageDialog(rootPane, e);
         }
-        
-        
+
+
     }//GEN-LAST:event_deleteutrustningActionPerformed
 
     private void fyllComboBox2() {
@@ -350,8 +316,8 @@ public class adminpage extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel!");
         }
-   }
-    
+    }
+
     private void changeadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeadminActionPerformed
         // TODO add your handling code here:
         /*String nyadmin = txtadmin.getText();
@@ -374,18 +340,18 @@ public class adminpage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, e);
             }
         }
-        */
-        
+         */
+
         String hamta = cbvaljadminagent.getSelectedItem().toString();
         try {
             idb.update("UPDATE agent SET Administrator='J' WHERE Namn='" + hamta + "'");
-            JOptionPane.showMessageDialog(rootPane, "Agent " + hamta+ " är nu admin");
+            JOptionPane.showMessageDialog(rootPane, "Agent " + hamta + " är nu admin");
             fyllComboBox3();
 
         } catch (InfException e) {
             JOptionPane.showMessageDialog(rootPane, e);
         }
-        
+
     }//GEN-LAST:event_changeadminActionPerformed
 
     private void fyllComboBox3() {
@@ -398,55 +364,51 @@ public class adminpage extends javax.swing.JFrame {
         } catch (InfException ex) {
             JOptionPane.showMessageDialog(null, "Något gick fel!");
         }
-   }
-    
+    }
+    private void changealieninfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changealieninfoActionPerformed
+        // TODO add your handling code here:
+        String hamta = cbvaljagentinfo.getSelectedItem().toString();
+        try {
+            String id = txtnamninfo.getText();
+            idb.update("UPDATE agent SET Agent_Id='" + id + "' WHERE Namn='" + hamta + "'");
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+}
+
+      
+    }//GEN-LAST:event_changealieninfoActionPerformed
+
+    private void fyllComboBox4() {
+        cbvaljagentinfo.removeAllItems();
+        try {
+            ArrayList<String> agent = idb.fetchColumn("SELECT Namn FROM agent");
+            for (String admin : agent) {
+                cbvaljagentinfo.addItem(admin);
+            }
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Något gick fel!");
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(adminpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(adminpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(adminpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(adminpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new adminpage().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbvaljadminagent;
     private javax.swing.JComboBox<String> cbvaljagent;
+    private javax.swing.JComboBox<String> cbvaljagentinfo;
     private javax.swing.JComboBox<String> cbvaljalien;
     private javax.swing.JComboBox<String> cbvaljutrustning;
     private javax.swing.JButton changeadmin;
+    private javax.swing.JButton changealieninfo;
     private javax.swing.JButton deleteagent;
     private javax.swing.JButton deletealien;
     private javax.swing.JButton deleteutrustning;
     private javax.swing.JTextField txtadmin;
     private javax.swing.JTextField txtagent;
     private javax.swing.JTextField txtalien;
+    private javax.swing.JTextField txtnamninfo;
     private javax.swing.JTextField txtutrustning;
     // End of variables declaration//GEN-END:variables
 }
