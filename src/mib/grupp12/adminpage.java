@@ -251,22 +251,28 @@ public class adminpage extends javax.swing.JFrame {
   
     private void deleteagentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteagentActionPerformed
         // TODO add your handling code here:
-       String hamta = cbvaljagent.getSelectedItem().toString();
+      String hamta = cbvaljagent.getSelectedItem().toString();
         try {
             String id = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn='" + hamta + "'");
+            String agent = idb.fetchSingle("SELECT Namn FROM agent WHERE Namn='" + hamta + "'");
+            if (!agent.equals(hamta)) {
+                idb.delete("DELETE FROM omradeschef WHERE Agent_ID=" + id);
+                idb.delete("DELETE FROM kontorschef WHERE Agent_ID=" + id);
+                idb.delete("DELETE FROM innehar_utrustning WHERE Agent_ID=" + id);
+                idb.delete("DELETE FROM faltagent WHERE Agent_ID=" + id);
+                idb.delete("DELETE FROM agent WHERE Agent_ID=" + id);
 
-            idb.delete("DELETE FROM omradeschef WHERE Agent_ID=" + id);
-            idb.delete("DELETE FROM kontorschef WHERE Agent_ID=" + id);
-            idb.delete("DELETE FROM innehar_utrustning WHERE Agent_ID=" + id);
-            idb.delete("DELETE FROM faltagent WHERE Agent_ID=" + id);
-            idb.delete("DELETE FROM agent WHERE Agent_ID=" + id);
-
-            JOptionPane.showMessageDialog(rootPane, "Agent " + hamta + " är nu borttagen!");
-            fyllComboBox1();
-            fyllComboBox3();
+                JOptionPane.showMessageDialog(rootPane, "Agent " + hamta + " är nu borttagen!");
+                fyllComboBox1();
+                fyllComboBox3();
+            }
+            else{
+            JOptionPane.showMessageDialog(rootPane, "Du kan inte ta bort dig själv");
+            }
         } catch (InfException e) {
             JOptionPane.showConfirmDialog(rootPane, e);
         }
+
 
     }//GEN-LAST:event_deleteagentActionPerformed
     private void fyllComboBox1() {
