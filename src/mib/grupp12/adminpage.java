@@ -252,14 +252,17 @@ public class adminpage extends javax.swing.JFrame {
     private void deleteagentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteagentActionPerformed
         // TODO add your handling code here:
       String hamta = cbvaljagent.getSelectedItem().toString();
+      String sparadEpost = datahandler.getSparadEpost();
+
         try {
             String id = idb.fetchSingle("SELECT Agent_ID FROM agent WHERE Namn='" + hamta + "'");
-            String agent = idb.fetchSingle("SELECT Namn FROM agent WHERE Namn='" + hamta + "'");
-            if (!agent.equals(hamta)) {
+            String epost = idb.fetchSingle("SELECT Epost FROM agent WHERE Namn='" + hamta + "'");
+            if (!epost.equals(sparadEpost)) {
                 idb.delete("DELETE FROM omradeschef WHERE Agent_ID=" + id);
                 idb.delete("DELETE FROM kontorschef WHERE Agent_ID=" + id);
                 idb.delete("DELETE FROM innehar_utrustning WHERE Agent_ID=" + id);
                 idb.delete("DELETE FROM faltagent WHERE Agent_ID=" + id);
+                idb.update("UPDATE alien SET Ansvarig_Agent = -1 WHERE Ansvarig_Agent = " + id);
                 idb.delete("DELETE FROM agent WHERE Agent_ID=" + id);
 
                 JOptionPane.showMessageDialog(rootPane, "Agent " + hamta + " är nu borttagen!");
