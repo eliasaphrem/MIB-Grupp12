@@ -70,21 +70,7 @@ public class adminandraagentinfo extends javax.swing.JFrame {
         }
     }
 
-    private void andraanstallningsdatum() {
-        String hamta = cbvaljagentinfo.getSelectedItem().toString();
-        try {
-            if (Validering.TextHarFaltVarde(txtanstallningsdatum)) {
-                String datum = txtanstallningsdatum.getText();
-                idb.update("UPDATE agent SET Anstallningsdatum='" + datum + "' WHERE Namn='" + hamta + "'");
-                JOptionPane.showMessageDialog(rootPane, "Agent datum är nu ändrad");
-                txtanstallningsdatum.setText(null);
-
-            }
-
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(rootPane, "Ange i formar xxxx-xx-xx");
-        }
-    }
+   
 
     private void andraepost() {
         String hamta = cbvaljagentinfo.getSelectedItem().toString();
@@ -142,8 +128,6 @@ public class adminandraagentinfo extends javax.swing.JFrame {
         andranamn = new javax.swing.JButton();
         txttelefon = new javax.swing.JTextField();
         andratelefon = new javax.swing.JButton();
-        andraanstallningsdatum = new javax.swing.JButton();
-        txtanstallningsdatum = new javax.swing.JTextField();
         txtepost = new javax.swing.JTextField();
         andraepost = new javax.swing.JButton();
         txtandralosenord = new javax.swing.JTextField();
@@ -166,13 +150,6 @@ public class adminandraagentinfo extends javax.swing.JFrame {
         andratelefon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 andratelefonActionPerformed(evt);
-            }
-        });
-
-        andraanstallningsdatum.setText("ändra anstallningsdatum");
-        andraanstallningsdatum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                andraanstallningsdatumActionPerformed(evt);
             }
         });
 
@@ -216,17 +193,16 @@ public class adminandraagentinfo extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txttelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtanstallningsdatum, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtepost, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtandralosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtomrade, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(andraanstallningsdatum)
                                     .addComponent(andratelefon)
                                     .addComponent(andraepost)
                                     .addComponent(andralosenord)
-                                    .addComponent(andraområde))))))
+                                    .addComponent(andraområde))))
+                        .addGap(50, 50, 50)))
                 .addContainerGap(143, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -242,11 +218,7 @@ public class adminandraagentinfo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txttelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(andratelefon))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(andraanstallningsdatum)
-                    .addComponent(txtanstallningsdatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtepost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(andraepost))
@@ -273,11 +245,6 @@ public class adminandraagentinfo extends javax.swing.JFrame {
         // TODO add your handling code here:
         andratelefon();
     }//GEN-LAST:event_andratelefonActionPerformed
-
-    private void andraanstallningsdatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraanstallningsdatumActionPerformed
-        // TODO add your handling code here:
-        andraanstallningsdatum();
-    }//GEN-LAST:event_andraanstallningsdatumActionPerformed
 
     private void andraepostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraepostActionPerformed
         // TODO add your handling code here:
@@ -310,7 +277,6 @@ public class adminandraagentinfo extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton andraanstallningsdatum;
     private javax.swing.JButton andraepost;
     private javax.swing.JButton andralosenord;
     private javax.swing.JButton andranamn;
@@ -318,7 +284,6 @@ public class adminandraagentinfo extends javax.swing.JFrame {
     private javax.swing.JButton andratelefon;
     private javax.swing.JComboBox<String> cbvaljagentinfo;
     private javax.swing.JTextField txtandralosenord;
-    private javax.swing.JTextField txtanstallningsdatum;
     private javax.swing.JTextField txtepost;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtomrade;

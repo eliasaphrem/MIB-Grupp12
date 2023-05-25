@@ -235,6 +235,7 @@ public class adminpage extends javax.swing.JFrame {
         }
     }
 
+    
     private void changeadminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeadminActionPerformed
         // TODO add your handling code here:
        
@@ -284,7 +285,7 @@ public class adminpage extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(rootPane, "Agent " + hamta + " är nu borttagen!");
                 fyllComboBox1();
-                fyllComboBox3();
+           
             } else {
                 // Du kan inte ta bort dig själv eller ingen matchning hittades
                 JOptionPane.showMessageDialog(rootPane, "Du kan inte ta bort dig själv eller ingen matchning hittades");
@@ -309,13 +310,14 @@ public class adminpage extends javax.swing.JFrame {
         }
     }
     
+    
     private void changeagentinfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeagentinfoActionPerformed
         // TODO add your handling code here:
        adminandraagentinfo ad = new adminandraagentinfo();
        ad.show();
        dispose();
     }//GEN-LAST:event_changeagentinfoActionPerformed
- 
+
 
     /**
      * @param args the command line arguments
