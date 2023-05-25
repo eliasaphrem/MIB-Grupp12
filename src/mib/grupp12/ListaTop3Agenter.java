@@ -74,7 +74,7 @@ public class ListaTop3Agenter extends javax.swing.JFrame {
 
         cbOmraden.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnVisaTop3.setText("jButton1");
+        btnVisaTop3.setText("OK");
         btnVisaTop3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVisaTop3ActionPerformed(evt);
@@ -94,18 +94,18 @@ public class ListaTop3Agenter extends javax.swing.JFrame {
                     .addComponent(cbOmraden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(158, 158, 158))
             .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
+                .addGap(92, 92, 92)
                 .addComponent(lblTop3Agenter, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(cbOmraden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(lblTop3Agenter)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTop3Agenter, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVisaTop3)
                 .addGap(87, 87, 87))
         );
@@ -115,32 +115,32 @@ public class ListaTop3Agenter extends javax.swing.JFrame {
 
     private void btnVisaTop3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaTop3ActionPerformed
         // TODO add your handling code here:
- lblTop3Agenter.setText(""); // Rensa tidigare text
+        lblTop3Agenter.setText(""); // Rensa tidigare text
 
-try {
-    String omrade = cbOmraden.getSelectedItem().toString();
+        try {
+            String omrade = cbOmraden.getSelectedItem().toString();
 
-    String query = "SELECT agent.agent_id, agent.namn, COUNT(alien.ansvarig_agent) AS assigned_aliens FROM agent JOIN alien ON agent.agent_id = alien.ansvarig_agent JOIN omrade ON agent.omrade = omrade.omrades_id WHERE omrade.benamning = '" + omrade + "' GROUP BY agent.agent_id, agent.namn ORDER BY assigned_aliens DESC LIMIT 3";
+            String query = "SELECT agent.agent_id, agent.namn, COUNT(alien.ansvarig_agent) AS assigned_aliens FROM agent JOIN alien ON agent.agent_id = alien.ansvarig_agent JOIN omrade ON agent.omrade = omrade.omrades_id WHERE omrade.benamning = '" + omrade + "' GROUP BY agent.agent_id, agent.namn ORDER BY assigned_aliens DESC LIMIT 3";
 
-    ArrayList<HashMap<String, String>> resultList = idb.fetchRows(query);
+            ArrayList<HashMap<String, String>> resultList = idb.fetchRows(query);
 
-    if (!resultList.isEmpty()) {
-        lblTop3Agenter.setText("<html>");
-        for (HashMap<String, String> enMap : resultList) {
-            System.out.println(enMap); // Felsökning: Skriv ut innehållet i HashMap-objektet
-            String id = enMap.get("Agent_ID");
-            String namn = enMap.get("Namn");
+            if (!resultList.isEmpty()) {
+                lblTop3Agenter.setText("<html>");
+                for (HashMap<String, String> enMap : resultList) {
+                    System.out.println(enMap); // Felsökning: Skriv ut innehållet i HashMap-objektet
+                    String id = enMap.get("Agent_ID");
+                    String namn = enMap.get("Namn");
 
-            lblTop3Agenter.setText(lblTop3Agenter.getText() + "ID: " + id + "<br>NAMN: " + namn + "<br><br>");
+                    lblTop3Agenter.setText(lblTop3Agenter.getText() + "ID: " + id + "<br>NAMN: " + namn + "<br><br>");
+                }
+                lblTop3Agenter.setText(lblTop3Agenter.getText() + "</html>");
+            } else {
+                lblTop3Agenter.setText("Det finns inga agenter i detta område...");
+            }
+
+        } catch (InfException ex) {
+            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
-        lblTop3Agenter.setText(lblTop3Agenter.getText() + "</html>");
-    } else {
-        lblTop3Agenter.setText("Det finns inga agenter i detta område...");
-    }
-
-} catch (InfException ex) {
-    JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-}
     }//GEN-LAST:event_btnVisaTop3ActionPerformed
 
     /**
