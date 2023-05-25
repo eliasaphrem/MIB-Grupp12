@@ -28,7 +28,7 @@
               <Component id="cbvaljalien" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="cbvaljagent" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
@@ -64,6 +64,11 @@
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="changeagentinfo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -79,17 +84,20 @@
                   <Component id="deleteutrustning" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="changeadmin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="134" max="32767" attributes="0"/>
+              <EmptySpace pref="77" max="32767" attributes="0"/>
+              <Component id="changeagentinfo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cbvaljalien" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbvaljagent" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="cbvaljalien" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="deletealien" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="deleteagent" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="cbvaljagent" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="deleteagent" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
@@ -188,6 +196,14 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="changeagentinfo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CHANGE INFO AGENT"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeagentinfoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
